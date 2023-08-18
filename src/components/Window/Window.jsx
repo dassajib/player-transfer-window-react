@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Col, Container, Form, Row } from "react-bootstrap";
+import { Col, Container, Form, Row, Spinner } from "react-bootstrap";
 import Player from "../Player/Player";
 import ContractInfo from "../ContractInfo/ContractInfo";
 
@@ -44,14 +44,22 @@ const Window = () => {
       />
       <Row>
         <Col sm={9}>
-          {/* mapping on displayPlayer for getting result based on search  */}
-          {displayPlayer.map((player) => (
-            <Player
-              key={player.id}
-              player={player}
-              handleClick={handleClick}
-            ></Player>
-          ))}
+          {players.length === 0 ? (
+            <div className="d-flex justify-content-center mt-1 mb-1">
+              <Spinner animation="border" />
+            </div>
+          ) : (
+            <Container>
+              {/* mapping on displayPlayer for getting result based on search  */}
+              {displayPlayer.map((player) => (
+                <Player
+                  key={player.id}
+                  player={player}
+                  handleClick={handleClick}
+                ></Player>
+              ))}
+            </Container>
+          )}
         </Col>
         <Col sm={3}>
           <ContractInfo cart={cart} />

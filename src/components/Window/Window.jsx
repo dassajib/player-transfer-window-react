@@ -5,7 +5,7 @@ import ContractInfo from "../ContractInfo/ContractInfo";
 
 const Window = () => {
   const [players, setPlayers] = useState([]);
-  const [cart, setCart] = useState([]);
+  const [playerCart, setPlayerCart] = useState([]);
   const [displayPlayer, setDisplayPlayer] = useState([]);
 
   useEffect(() => {
@@ -21,10 +21,11 @@ const Window = () => {
   // click function write here because react follow's uni direction
   const handleClick = (player) => {
     // we need to use immute, that's why at first i do copy then add new click result
-    const newCart = [...cart, player];
-    setCart(newCart);
+    const newSignedPlayers = [...playerCart, player];
+    setPlayerCart(newSignedPlayers);
   };
 
+  // search function
   const handleSearch = (e) => {
     const searchedPlayer = e.target.value;
     // filter applied for getting result after search
@@ -33,6 +34,12 @@ const Window = () => {
     );
     setDisplayPlayer(searchedResult);
   };
+
+  //remove function
+  const handleRemove = (id) => {
+    const updatedSignedPlayers = playerCart.filter(player => player.id !== id)
+    setPlayerCart(updatedSignedPlayers); 
+  } 
 
   return (
     <Container>
@@ -56,13 +63,14 @@ const Window = () => {
                   key={player.id}
                   player={player}
                   handleClick={handleClick}
+                  handleRemove={handleRemove}
                 ></Player>
               ))}
             </Container>
           )}
         </Col>
         <Col sm={3}>
-          <ContractInfo cart={cart} />
+          <ContractInfo playerCart={playerCart} />
         </Col>
       </Row>
     </Container>

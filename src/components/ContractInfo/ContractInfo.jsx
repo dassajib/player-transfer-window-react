@@ -3,8 +3,8 @@ import { Container } from 'react-bootstrap'
 
 const ContractInfo = (props) => {
   
-  const signedPlayer = props.cart;
-  
+  const signedPlayer = props.playerCart;
+
   const total = signedPlayer.reduce((prev, curr) => {
     return prev + curr.value;
   }, 0)

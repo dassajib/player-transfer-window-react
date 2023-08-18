@@ -1,12 +1,8 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import Index from "./index/Index";
 
 function App() {
-
-  return (
-    <>
-    Hello 
-    </>
-  )
+  return <Index />;
 }
 
-export default App
+export default App;

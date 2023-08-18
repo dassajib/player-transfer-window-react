@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const Player = (props) => {
   const { id, image, name, country, position, number, value } = props.player;
+
   return (
     <Row xs={1} md={2}>
       <Col>
